@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>无限懒加载-瀑布流</title>
+    <script src="js/lazyload.js"></script>
+    <style>
+        *{margin: 0;padding: 0}
+        .pic-container{
+            width: 1000px;
+            overflow: hidden;
+            margin: auto;
+            box-shadow: 0 0 5px pink;
+        }
+        .pic-container .pic-content .pic-wrapper{
+            float: left;
+            width: 225px;
+            padding: 5px;
+            margin: 5px;
+            box-shadow: 0 0 8px #252525;
+            list-style: none;
+            background-color: white;
+            overflow: hidden;
+        }
+        .pic-container .pic-content .pic-wrapper a{
+            display:none;
+            width: 100%;
+        }
+        .pic-container .pic-content .pic-wrapper a.scale{
+            transform: scale(1) !important;
+            transition: 0.5s;
+        }
+        .pic-container .pic-content .pic-wrapper img{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="pic-container">
+        <ul class="pic-content">
+            <li class="pic-wrapper"></li>
+            <li class="pic-wrapper"></li>
+            <li class="pic-wrapper"></li>
+            <li class="pic-wrapper"></li>
+        </ul>
+    </div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+    <script>
+        lazyload({
+            container: $('.pic-container'),
+            width: 250,             // 宽度固定与$pic_wrapper宽度一致
+            data: [
+                'img/1.png',
+                'img/2.jpg'
+            ],                      // data可以填写img的本地存放地址，若不填则默认从网上随机加载
+            random: true,           // 若data和random参数都未设置时，则默认true
+            count: 100,             // 若random参数设置为true时，此参数方可生效，默认50
+            num: 7,                 // 每次请求的图片数量 默认5
+            threshold: 10,          // 临界值 当可视区域离图片还有 threshold 个象素的时候开始加载图片
+            animate: 'scale',       // fade slideDown scale
+            time : 500              // 毫秒计 动画完成时间
+        })
+    </script>
+</body>
+</html>

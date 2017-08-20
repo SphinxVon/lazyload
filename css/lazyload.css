@@ -1,0 +1,35 @@
+*{margin: 0;padding: 0}
+.pic-container{
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+    box-shadow: 0 0 5px pink;
+}
+.pic-container .pic-content{
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content:center;
+    align-items:flex-start;
+    align-content:flex-start ;
+}
+.pic-container .pic-content .pic-wrapper{
+    flex: 0 1 auto;
+    padding: 5px;
+    margin: 5px;
+    box-shadow: 0 0 8px #252525;
+    list-style: none;
+    background-color: white;
+    overflow: hidden;
+}
+.pic-container .pic-content .pic-wrapper .pic{
+    display:none;
+    width: 100%;
+}
+.pic-container .pic-content .pic-wrapper .pic.scale{
+    transform: scale(1) !important;
+    transition: 0.5s;
+}
+.pic-container .pic-content .pic-wrapper .pic img{
+    width:100%;
+}

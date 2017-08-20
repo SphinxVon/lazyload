@@ -1,0 +1,16 @@
+1.首先需要引入lazyload.css，jquery，和lazyload.js文件
+
+<script>
+        lazyload({
+            container: $('.pic-container'),
+            width: 225,             // 宽度默认250 图片宽度设置不宜过大
+            data: [],                      // data可以填写img的本地存放地址，若不填则默认从网上随机加载
+            random: true,           // 若data和random参数都未设置时，则默认true
+            count: 100,             // 若random参数设置为true时，此参数方可生效，默认50
+            num: 7,                 // 每次请求的图片数量 默认5
+            threshold: 10,          // 临界值 当可视区域离图片还有 threshold 个象素的时候开始加载图片
+            animate: 'scale',       // fade slideDown
+            time : 500              // 毫秒计 动画完成时间
+        });
+
+</script>

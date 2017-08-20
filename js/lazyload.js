@@ -6,8 +6,8 @@ window.lazyload = function (json) {
     if (json.random&&!json.count) {json.count = 50}
     var $container = json.container;
     var $pic_wrapper = $container.find('.pic-content .pic-wrapper');
-// 宽度默认固定与$pic_wrapper宽度一致
-    var width = json.width?json.width:$pic_wrapper.height();
+// 宽度默认250
+    var width = json.width?json.width:250;
     var height;
     /*存储取imgsrc的地址*/
     var dataSrc = json.data;
@@ -52,7 +52,7 @@ window.lazyload = function (json) {
         aImg.src = dataSrc[index%length];
         aImg.onload = function () {
 // 图片加载完成后立即执行
-            var $con = $('<a href=""><img src="' + aImg.src + '"/></a>');
+            var $con = $('<a href="" class="pic"><img src="' + aImg.src + '"/></a>');
 //                    $con.css({display:"none"});
             getShortLi($pic_wrapper).append($con);
             setAnimate($con);
@@ -125,4 +125,8 @@ window.lazyload = function (json) {
             }
         });
     });
+    $pic_wrapper.find('.scale').css({
+        "transform": "scale(1)",
+        "transition": time/1000
+    })
 };
